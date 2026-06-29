@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RuleHub Models Metadata</title>
+
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <script src="index.css" defer></script>
+</head>
+
+<body>
+  <h1>RuleHub Models Metadata</h1>
+  <p class="muted">
+    Dynamically generated from YAML and BNGL files in
+    <code>RuleWorld/RuleHub/Published</code>,
+    <code>RuleWorld/RuleHub/Examples</code>, and
+    <code>RuleWorld/RuleHub/Tutorials</code>.
+  </p>
+
+  <div class="controls">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search all YAML fields..."
+      aria-label="Search all YAML fields"
+    />
+    <button id="clearSearch">Clear search</button>
+    <button id="reload">Reload from GitHub</button>
+    <button id="downloadCsv">Download visible CSV</button>
+  </div>
+
+  <div id="status">Loading...</div>
+
+  <section class="filter-panel">
+    <h2>Filters</h2>
+
+    <div class="filter-groups">
+      <div class="filter-group">
+        <span class="filter-group-title">Difficulty:</span>
+
+        <label class="difficulty-beginner">
+          <input type="checkbox" class="difficulty-checkbox" value="beginner" checked>
+          Beginner
+        </label>
+
+        <label class="difficulty-intermediate">
+          <input type="checkbox" class="difficulty-checkbox" value="intermediate" checked>
+          Intermediate
+        </label>
+
+        <label class="difficulty-advanced">
+          <input type="checkbox" class="difficulty-checkbox" value="advanced" checked>
+          Advanced
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-title">Type:</span>
+
+        <label>
+          <input type="checkbox" class="type-checkbox" value="Examples" checked>
+          Examples
+        </label>
+
+        <label>
+          <input type="checkbox" class="type-checkbox" value="Tutorials" checked>
+          Tutorials
+        </label>
+
+        <label>
+          <input type="checkbox" class="type-checkbox" value="Published" checked>
+          Published
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-title">Compatibility/features:</span>
+
+        <label>
+          <input type="checkbox" class="feature-checkbox" value="compatibility.nfsim_compatible">
+          NFsim compatible
+        </label>
+
+        <label>
+          <input type="checkbox" class="feature-checkbox" value="compatibility.bng2_compatible">
+          bng2 compatible
+        </label>
+
+        <label>
+          <input type="checkbox" class="feature-checkbox" value="compatibility.uses_compartments">
+          Use compartments
+        </label>
+
+        <label>
+          <input type="checkbox" class="feature-checkbox" value="compatibility.uses_energy">
+          Use energy
+        </label>
+
+        <label>
+          <input type="checkbox" class="feature-checkbox" value="compatibility.uses_functions">
+          Use functions
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="column-panel">
+    <div class="column-header">
+      <h2>Columns</h2>
+
+      <div class="column-actions">
+        <button id="showDefault" class="small-button">Default columns</button>
+        <button id="showAll" class="small-button">Show all</button>
+        <button id="hideAll" class="small-button">Hide all</button>
+      </div>
+    </div>
+
+    <!--
+      The following column checkboxes are intentionally commented out / hidden:
+      file,
+      path,
+      id,
+      bngl_code,
+      bngl_file,
+      bngl_path,
+      yaml_file,
+      yaml_path,
+      github,
+      bngl_item,
+      yaml_github,
+      source.source_path,
+      source.origin,
+      playground.visible,
+      playground.featured,
+      playground.gallery_category,
+      playground.gallery_categories,
+      contributors,
+      parse_error,
+      collection.count,
+      collection.parent_model,
+      collection.type,
+      collection.variant_key,
+      source.original_format,
+      source.original_repository,
+      raw
+    -->
+
+    <div id="columnCheckboxes" class="checkbox-grid"></div>
+  </section>
+
+  <div class="table-wrap">
+    <table id="metadataTable"></table>
+  </div>
+
+  <div class="pagination">
+    <div id="pageSummary"></div>
+
+    <div class="pagination-controls">
+      <label>
+        Rows per page:
+        <select id="pageSize">
+          <option value="50" selected>50</option>
+          <option value="100">100</option>
+          <option value="all">All</option>
+        </select>
+      </label>
+
+      <button id="firstPage">First</button>
+      <button id="prevPage">Previous</button>
+      <span id="pageNumber"></span>
+      <button id="nextPage">Next</button>
+      <button id="lastPage">Last</button>
+    </div>
+  </div>
+</body>
+</html>
