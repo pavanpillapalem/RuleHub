@@ -27,7 +27,7 @@ const BNG_PLAYGROUND_PAGE =
   "https://ruleworld.github.io/bngplayground/";
 
 const DEFAULT_VISIBLE_COLUMNS = [
-  "type",
+  "source.origin",
   "name",
   "description",
   "bnglviz",
@@ -56,7 +56,6 @@ const COMMENTED_OUT_COLUMN_CHECKBOXES = new Set([
   "bngl_item",
   "yaml_github",
   "source.source_path",
-  "source.origin",
   "playground.visible",
   "playground.featured",
   "playground.gallery_category",
@@ -90,7 +89,7 @@ const NON_SORTABLE_COLUMNS = new Set([
 ]);
 
 const COLUMN_LABELS = {
-  "type": "Type",
+  "source.origin": "Type",
   "name": "Name",
   "description": "Description",
   "bngl_code": "BNGL code",
@@ -311,7 +310,7 @@ async function loadYamlFile(path, bnglPaths) {
     const text = await fetchText(rawUrl);
     const parsed = jsyaml.load(text) || {};
     const flat = flattenObject(parsed);
-
+console.log(flat["source.origin"]);
     if (bnglItems.length === 0) {
       return [{
         type: typeFromPath(path),
@@ -422,7 +421,7 @@ async function loadAllMetadata() {
   rows.forEach(row => Object.keys(row).forEach(key => allColumnNames.add(key)));
 
   const preferred = [
-    "type",
+    "source.origin",
     "name",
     "description",
     "bnglviz",
@@ -451,7 +450,6 @@ async function loadAllMetadata() {
     "category",
     "compatibility.min_bng_version",
     "compatibility.simulation_methods",
-    "source.origin",
     "source.source_path",
     "playground.visible",
     "playground.gallery_category",
@@ -465,7 +463,7 @@ async function loadAllMetadata() {
     ...preferred.filter(column =>
       (
         allColumnNames.has(column) ||
-        column === "type" ||
+        column === "source.origin" ||
         column === "bnglviz" ||
         column === "rules_railroad" ||
         column === "bngplayground" ||
@@ -540,7 +538,7 @@ function renderCell(column, value, row) {
     return `<a href="${escapeHtml(value)}" target="_blank" rel="noopener">link</a>`;
   }
 
-  if (column === "type") {
+  if (column === "source.origin") {
     return `<span class="type-badge">${escapeHtml(value)}</span>`;
   }
 
@@ -832,6 +830,24 @@ function updateStatus() {
   const summary = ["Published", "Examples", "Tutorials"]
     .map(type => `${type}: ${typeCounts[type] || 0}`)
     .join("; ");
+
+    // Update hero statistics
+document.getElementById("modelCount").textContent =
+  `${rows.length} Total Models`;
+
+document.getElementById("modelSummary").innerHTML = `
+  <span class="stat published">
+    Published: ${typeCounts.Published || 0}
+  </span>
+
+  <span class="stat examples">
+    Examples: ${typeCounts.Examples || 0}
+  </span>
+
+  <span class="stat tutorials">
+    Tutorials: ${typeCounts.Tutorials || 0}
+  </span>
+`;
 
   statusEl.textContent =
     `Loaded ${rows.length} row(s) from YAML/BNGL file(s). Showing ${visibleColumns.size} column(s). ${summary}.`;
