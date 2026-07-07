@@ -18,7 +18,7 @@ const GITHUB_BLOB_BASE =
   `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/`;
 
 const BNGLVIZ_PAGE =
-  "https://bnglviz.github.io/bnglviz.html";
+  "https://bnglviz.github.io/bngl_bnglviz.html";
 
 const RULES_RAILROAD_PAGE =
   "https://rulesrailroad.github.io/bngl_rrr.html";
