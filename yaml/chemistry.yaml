@@ -5,11 +5,14 @@ description: "Basic chemical reactions"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["published", "tutorials", "chemistry", "a", "b", "c", "d", "e"]
 
 date:
   last_tested: 2026-06-30
+
+category: "tutorial"
 
 biol_categories: ["tutorial"]
 
@@ -20,16 +23,16 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: false
   vcell_compatible: false
-  vcell_errors: " encountered exclude_reactants"
+  vcell_errors: "encountered exclude_reactants"
   simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
+  nfsim_compatible: false
   molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "published-models/tutorials/chemistry.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["tutorials"]
   featured: false
   difficulty: "advanced"
- 

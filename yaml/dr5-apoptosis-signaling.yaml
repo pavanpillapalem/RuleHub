@@ -5,11 +5,14 @@ description: "DR5 (TRAIL) Signaling: Extrinsic apoptosis and DISC formation."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["dr5", "apoptosis", "signaling", "trail", "fadd", "caspase8", "flip", "death_signal"]
 
 date:
   last_tested: 2026-07-02
+
+category: "signaling"
 
 biol_categories: ["signaling", "cell cycle", "apoptosis"]
 
@@ -18,17 +21,17 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
   vcell_errors: "Encountered -> at line 78"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true  #false in original metadata.yaml but runs with bng2
-  molclustpy_compatible: false #IndexError: list index out of range
+  nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
   uses_functions: true
   uses_totalrate: false
@@ -44,11 +47,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/dr5-apoptosis-signaling.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["cell-cycle","test-models"]
   featured: false
   difficulty: "advanced"
- 
-

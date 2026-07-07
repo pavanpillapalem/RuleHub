@@ -5,11 +5,14 @@ description: "CD40 Signaling: B-cell activation and TRAF-mediated relay."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["cd40", "signaling", "cd40l", "traf", "ikk", "nik", "nfkb", "relb"]
 
 date:
   last_tested: 2026-07-01
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -18,19 +21,19 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered TotalRate at line 71 "
+  vcell_errors: "Encountered TotalRate at line 71"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true #false in original metadata.yaml, but runs with nf on bng2       
-  molclustpy_compatible: true #Put action block after end model
+  nfsim_compatible: true
+  molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: true
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -44,10 +47,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/cd40-signaling.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["immunology","test-models"]
   featured: false
   difficulty: "advanced"
- 

@@ -5,11 +5,14 @@ description: "Hippo Pathway: Contact inhibition and YAP regulation."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["contact", "inhibition", "hippo", "yap", "mst", "lats", "tead"]
 
 date:
   last_tested: 2026-07-02
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -18,21 +21,20 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
-  bngp_compatible: true # does not run with nf option
-  vcell_compatible: true # put actions outside of model
-  vcell_errors: 
+  bng2_compatible: true
+  bngp_compatible: true
+  vcell_compatible: true
+  vcell_errors:
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true  # CHANGED! WARNING: Species with more than 20 molecules will be labeled with the Quasi method.
-  molclustpy_compatible: true # if set species concentration to variable instead of 1000
+  nfsim_compatible: true
+  molclustpy_compatible: true
   uses_compartments: false
   uses_energy: false
   uses_functions: true
 
-
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
   uses_functions: true
   uses_totalrate: false
@@ -48,10 +50,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/contact-inhibition-hippo-yap.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
