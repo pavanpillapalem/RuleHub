@@ -5,10 +5,13 @@ description: "E2F/Rb Switch: The G1/S transition gate."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["e2f", "rb", "cell", "cycle", "switch", "mitogen", "cycd", "cyce", "p27"]
 date:
   last_tested: 2026-07-02
+
+category: "signaling"
 
 biol_categories: ["signaling", "cell cycle"]
 
@@ -17,17 +20,17 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
-  vcell_compatible: false 
+  vcell_compatible: false
   vcell_errors: "Encountered -> at line 73"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: false # "NFsim does not support 'continue' option. at line 101"
-  molclustpy_compatible: false #IndexError: list index out of range
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
   uses_functions: true
   uses_totalrate: false
@@ -43,11 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/e2f-rb-cell-cycle-switch.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["cell-cycle","test-models"]
   featured: false
   difficulty: "advanced"
- 
-

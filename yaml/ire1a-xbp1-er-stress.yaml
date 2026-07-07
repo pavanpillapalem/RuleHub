@@ -5,6 +5,7 @@ description: "IRE1a/XBP1 ER Stress: Chaperone buffering and mRNA decay (RIDD)."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["ire1a", "xbp1", "er", "stress", "ire1", "bip", "unfolded", "ridd_target"]
 date:
@@ -20,7 +21,7 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: true
-  bngp_compatible: true 
+  bngp_compatible: true
   vcell_compatible: false
   vcell_errors: "Encountered -> at line 69"
   simulation_methods: ["ode", "ssa"]
@@ -28,11 +29,11 @@ compatibility:
   uses_energy: false
   uses_functions: true
   uses_compartments: false
-  nfsim_compatible: true 
+  nfsim_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -49,12 +50,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/ire1a-xbp1-er-stress.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
-
-
