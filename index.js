@@ -27,7 +27,7 @@ const BNG_PLAYGROUND_PAGE =
   "https://ruleworld.github.io/bngplayground/";
 
 const DEFAULT_VISIBLE_COLUMNS = [
-  "type",
+  "source.origin",
   "name",
   "description",
   "bnglviz",
@@ -38,9 +38,9 @@ const DEFAULT_VISIBLE_COLUMNS = [
 const FEATURE_FILTER_COLUMNS = new Set([
   "compatibility.nfsim_compatible",
   "compatibility.bng2_compatible",
-  "compatibility.uses_compartments",
-  "compatibility.uses_energy",
-  "compatibility.uses_functions"
+  "Features.uses_compartments",
+  "Features.uses_energy",
+  "Features.uses_functions"
 ]);
 
 const COMMENTED_OUT_COLUMN_CHECKBOXES = new Set([
@@ -56,7 +56,6 @@ const COMMENTED_OUT_COLUMN_CHECKBOXES = new Set([
   "bngl_item",
   "yaml_github",
   "source.source_path",
-  "source.origin",
   "playground.visible",
   "playground.featured",
   "playground.gallery_category",
@@ -90,7 +89,7 @@ const NON_SORTABLE_COLUMNS = new Set([
 ]);
 
 const COLUMN_LABELS = {
-  "type": "Type",
+  "source.origin": "Type",
   "name": "Name",
   "description": "Description",
   "bngl_code": "BNGL code",
@@ -311,7 +310,8 @@ async function loadYamlFile(path, bnglPaths) {
     const text = await fetchText(rawUrl);
     const parsed = jsyaml.load(text) || {};
     const flat = flattenObject(parsed);
-
+    console.log(flat);
+console.log(flat["source.origin"]);
     if (bnglItems.length === 0) {
       return [{
         type: typeFromPath(path),
@@ -422,7 +422,7 @@ async function loadAllMetadata() {
   rows.forEach(row => Object.keys(row).forEach(key => allColumnNames.add(key)));
 
   const preferred = [
-    "type",
+    "source.origin",
     "name",
     "description",
     "bnglviz",
@@ -451,7 +451,6 @@ async function loadAllMetadata() {
     "category",
     "compatibility.min_bng_version",
     "compatibility.simulation_methods",
-    "source.origin",
     "source.source_path",
     "playground.visible",
     "playground.gallery_category",
@@ -465,7 +464,7 @@ async function loadAllMetadata() {
     ...preferred.filter(column =>
       (
         allColumnNames.has(column) ||
-        column === "type" ||
+        column === "source.origin" ||
         column === "bnglviz" ||
         column === "rules_railroad" ||
         column === "bngplayground" ||
@@ -540,17 +539,33 @@ function renderCell(column, value, row) {
     return `<a href="${escapeHtml(value)}" target="_blank" rel="noopener">link</a>`;
   }
 
-  if (column === "type") {
+  if (column === "source.origin") {
     return `<span class="type-badge">${escapeHtml(value)}</span>`;
   }
 
-  if (column === "description") {
-    if (!value) return "";
-    if (row.raw) {
-      return `<a href="${escapeHtml(row.raw)}" target="_blank" rel="noopener">${escapeHtml(value)}</a> <img src="icons/einstein-equation.svg" width="28" alt="Energy"> <img src="icons/functions.svg" width="28" alt="Functions">`;
-    }
-    return escapeHtml(value);
+if (column === "description") {
+  if (!value) return "";
+
+  if (row.raw) {
+    const energyIcon = isTruthyYamlValue(
+      row["Features.uses_energy"] ??
+      row["compatibility.uses_energy"]
+    )
+      ? ` <img src="icons/einstein-equation.svg" width="28" alt="Energy">`
+      : "";
+
+    const functionIcon = isTruthyYamlValue(
+      row["Features.uses_functions"] ??
+      row["compatibility.uses_functions"]
+    )
+      ? ` <img src="icons/functions.svg" width="28" alt="Functions">`
+      : "";
+
+    return `<a href="${escapeHtml(row.raw)}" target="_blank" rel="noopener">${escapeHtml(value)}</a>${energyIcon}${functionIcon}`;
   }
+
+  return escapeHtml(value);
+}
 
   if (column === "bnglviz") {
     return renderSingleViewLink(value, "bnglVizUrl");
@@ -616,12 +631,30 @@ function rowMatchesDifficulty(row) {
   return selected.has(difficulty);
 }
 
+function getFeatureFilterCandidates(column) {
+  const candidates = [column];
+
+  if (column.startsWith("compatibility.")) {
+    candidates.push(column.replace("compatibility.", "Features."));
+  }
+
+  if (column.startsWith("Features.")) {
+    candidates.push(column.replace("Features.", "compatibility."));
+  }
+
+  return candidates;
+}
+
 function rowMatchesFeatureFilters(row) {
   const selectedFeatureFilters = getSelectedFeatureFilters();
 
-  return selectedFeatureFilters.every(column =>
-    isTruthyYamlValue(row[column])
-  );
+  return selectedFeatureFilters.every(column => {
+    const value = getFeatureFilterCandidates(column)
+      .map(key => row[key])
+      .find(item => item !== undefined);
+
+    return value != null && isTruthyYamlValue(value);
+  });
 }
 
 function valueForSort(row, column) {
@@ -833,6 +866,24 @@ function updateStatus() {
     .map(type => `${type}: ${typeCounts[type] || 0}`)
     .join("; ");
 
+    // Update hero statistics
+document.getElementById("modelCount").textContent =
+  `${rows.length} Total Models`;
+
+document.getElementById("modelSummary").innerHTML = `
+  <span class="stat published">
+    Published: ${typeCounts.Published || 0}
+  </span>
+
+  <span class="stat examples">
+    Examples: ${typeCounts.Examples || 0}
+  </span>
+
+  <span class="stat tutorials">
+    Tutorials: ${typeCounts.Tutorials || 0}
+  </span>
+`;
+
   statusEl.textContent =
     `Loaded ${rows.length} row(s) from YAML/BNGL file(s). Showing ${visibleColumns.size} column(s). ${summary}.`;
 }
@@ -925,12 +976,6 @@ function attachEventListeners() {
   document.getElementById("reload").addEventListener("click", loadAllMetadata);
 
   document.getElementById("downloadCsv").addEventListener("click", downloadCsv);
-
-  document.getElementById("clearSearch").addEventListener("click", () => {
-    searchEl.value = "";
-    currentPage = 1;
-    renderTable();
-  });
 
   document.getElementById("showDefault").addEventListener("click", () => {
     visibleColumns = new Set(DEFAULT_VISIBLE_COLUMNS.filter(column => columns.includes(column)));

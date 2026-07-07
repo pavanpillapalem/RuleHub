@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RuleHub Models Metadata</title>
+
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+<header class="site-header">
+
+  <h1>RuleHub</h1>
+
+  <h2>World of Rule-Based Models</h2>
+
+  <nav class="main-nav">
+    <a href="workingindex.html"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+<path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 11 21 L 11 15 L 13 15 L 13 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z M 12 4.7910156 L 18 10.191406 L 18 11 L 18 19 L 15 19 L 15 13 L 9 13 L 9 19 L 6 19 L 6 10.191406 L 12 4.7910156 z"></path>
+</svg>Models</a>
+    <a href="description.html" class="active">Rule-Based Modeling</a>
+    <a href="publications.html">Publications</a>
+    <a href="tools.html">Tools</a>
+    <a href="about.html">About</a>
+  </nav>
+
+</header>
+        <h2 class="page-title" style="
+        margin-top: 35px;
+">What is rule-based modeling?</h2>
+
+    <p>Rule-based modeling is based on the representation of biological objects (declared as molecules but in fact 
+    may be representing any objects from protein domains to humans or ecosystems) as objects with a set of attributes 
+    (called sites) that may take a finite number of states. </p>
+        <p><em>In non-biology world, a traffic light is such an object - it has 3 sites (red, yellow, green) 
+        that can be in 2 states each (on/off). Theoretically, there are 8 possible states of a traffic light. In reality, the number of 
+        possible states is less, as green and red can not be "on" simultaneously. </em></p>
+
+    <p>Molecular interactions are defined as rules for transforming the attributes of these objects. 
+    The approach allows one to systematically incorporate site-specific details about protein-protein interactions 
+    into a model for the dynamics of a signal-transduction system 
+        (e.g. <a href="https://pubmed.ncbi.nlm.nih.gov/12217386/" style="color: blue;">Goldstein et al., 2002</a>, 
+        <a href="https://pubmed.ncbi.nlm.nih.gov/12646643/" style="color: blue;">Faeder et al., 2003</a>,
+        <a href="https://pubmed.gov/16233948/" style="color: blue;">Blinov et al., 2006</a>), 
+    but the method has other applications as well, such as following the fates of 
+    individual carbon atoms in metabolic reactions (<a href="https://pubmed.ncbi.nlm.nih.gov/17933853/" style="color: blue;">Mu et al., 2007</a>),
+    or analysis of phase transition in large molecular assemblies 
+        (<a href="https://pubmed.ncbi.nlm.nih.gov/34236318/" style="color: blue;">Chattaraj et al., 2021</a>).</p>
+
+        <p><em>In non-biology word, the rule for state change in the traffic light would be "If green light is on and red if off, turn yellow on". </it>  
+    The rule-based descriptioncan be coded in multiple ways.</em></p>
+    
+
+
+     <h2>Textual coding of a rule-based modeling</h2>
+
+    
+    <p>A rule-based models are defined in several languages, such as BioNetGen Language BNGL 
+        (<a href="https://pubmed.gov/19399430/" style="color: blue;">Faeder et al., 2009</a>), 
+        Kappa Language (<a href="https://pubmed.gov/29950016/" style="color: blue;">Boutillier et al., 2018</a>), 
+        ML-rules (<a href="https://pubmed.gov/22005019/" style="color: blue;">Maus et al., 2011</a>),
+        BioCHAM (<a href="https://pubmed.gov/16672256/" style="color: blue;">Calcone et al., 2006</a>).
+        
+        Multiple modeling and simulation tools work with rule-based models, such as 
+        BioNetGen (<a href="https://pubmed.gov/15217809/" style="color: blue;">Blinov et al., 2004</a>),
+        KaSim (<a href="https://pubmed.gov/29950016/" style="color: blue;">Boutillier et al., 2018</a>),
+        SmolDyn (<a href="https://pubmed.gov/28365760/" style="color: blue;">Andrews, 2017</a>),
+        VCell (<a href="https://pubmed.gov/27497444/" style="color: blue;">Schaff et al., 2016</a>),
+        NerdSS (<a href="https://pubmed.gov/32470324/" style="color: blue;">Varga et al., 2020</a>),
+        PySB (<a href="https://pubmed.gov/23423320/" style="color: blue;">Lopez et al., 2013</a>),
+        Simmune (<a href="https://pubmed.gov/23508970/" style="color: blue;">Zhang et al., 2013</a>),
+        MolClustPy (<a href="https://pubmed.gov/37326981/" style="color: blue;">Chattaraj et al., 2023</a>).
+        Here, we focus on the easy visual representation of 
+        the rule-based model specified in the BioNetGen language (BNGL). 
+
+      <h3>Molecules</h3>  
+
+In the Rules RailRoad <a href="examples/Blinov_2006.html" style="color: blue;">Epidermal Growth Factor Receptor</a> signaling model 
+        (<a href="https://pubmed.gov/16233948/" style="color: blue;">Blinov et al., 2006</a>) there are several molecules. 
+        Below we consider in details two: "egf" molecule (ligand) has 
+        a single site "r", 
+        while "egfr" molecule (receptor) has four sites: "l", "r", "Y1068" and "Y1173". 
+        Two last sites can be in two mutually-exclusive states each:  either "u" or "p".
+  <br><img src="images/Molecules1.png" width=600>
+
+       <h3>Species</h3>  
+
+In rule-based modeling, like in agent-based modeling, simulations start with the certain set of seed species.
+        Here we describe two: "egf" species is identical to "egf" molecules,  but "egfr" species must have states of sites 
+        being uniquely defined. In the example below, both "Y1068" and "Y1073" sites have a state "u". 
+  <br><img src="images/Species1.png" width=600> 
+
+        <h3>Observables</h3>  
+
+As each species includes all details on levels of protein domains, it often necessary to group species into pools 
+        of "observables" having the same features, and count molecules within these pools to compare simulation results with 
+        experimental observations. In the example below, the first line defines an observable "dimers" that
+        has two "egfr" molecules connected through "r" sites. Other sites are shown in grey, which means they can be 
+        connected in any states (for "Y1068" and "Y1173" sites) or be connected to any other molecules. The second observable "RP1"
+        defines all species that have "egfr" molecule as part of them, with site "Y1068" being phosphorylated, 
+        but possibly bound or unbound to other molecules. Notice the first term "Molecules". It means that observable counts all
+        molecules, so the population count of this species is reported multiplied by 2, as it contains two instances of "egfr"
+        molecules. The term "Species" counts this species only once.
+  <br><img src="images/Observables1.png" width=600> 
+
+        <h3>Reaction rules</h3>  
+
+Reaction rules define classes of reactions with the same kinetics, by specifying features of molecules that participate 
+        in these reactions. In the example below, "egf" ligand binds to "egfr" molecule via making a bond between 
+        "r" site of "egf" and "l" site of "egfr". Interestingly, "r" site of "egfr" is shown in color, indicating that 
+        it is important for this interaction. No marks under this site means that it must be unbound for interaction to happen 
+        - meaning that "egf" can bind only to monomeric "egfr".
+        All grey sites have no effect on the interaction, so the same kinetics applies whether "egfr" is bound to any other proteins 
+        on other sites.
+        The second reaction is dimerization, and the "l" sites of "egfr" molecules must be bound to something. So, combined with the first rule, 
+        it means that ligand-bound receptors can dimerize, and kinetics of dimerization does not depend on the state of intracellular sites or 
+        on the other molecules bound to "egfr".
+  <br><img src="images/rule2.png" width=600> 
+
+
+
+   
+</body>
