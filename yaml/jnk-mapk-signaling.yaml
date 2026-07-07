@@ -5,6 +5,7 @@ description: "JNK MAPK Signaling: Scaffold-mediated activation and feedback."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["jnk", "mapk", "signaling", "mkk7", "jip1", "v_dephos"]
 date:
@@ -20,19 +21,19 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: true
-  bngp_compatible: true 
-  vcell_compatible: true #It cannot run the simulation there is an error message.
+  bngp_compatible: true
+  vcell_compatible: true
   vcell_errors: "RuntimeException-Application 'NFSim app' has no generated Math, Failed to generate new Math: not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))' MappingException-not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))'"
   simulation_methods: ["ode", "ssa"]
-  molclustpy_compatible: false #cannot access local variable 'stdout_str' where it is not associated with a value
+  molclustpy_compatible: false
   uses_energy: false
   uses_functions: true
   uses_compartments: false
-  nfsim_compatible: true #false in orignal metadata.yaml file, but runs with bng2
+  nfsim_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -49,12 +50,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/jak-stat-cytokine-signaling.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
-
-

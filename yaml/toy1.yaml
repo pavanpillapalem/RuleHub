@@ -5,11 +5,14 @@ description: "Basic signaling toy"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["published", "tutorials", "toy1", "l", "r", "a", "generate_network", "writesbml", "simulate_ode"]
 
 date:
   last_tested: 2026-06-30
+
+category: "tutorial"
 
 biol_categories: ["tutorial"]
 
@@ -18,18 +21,18 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true #False in original metadata.yaml, have to change "molecules" to "molecule types" in toy1.bngl to make it compatible with bng2
+  bng2_compatible: true
   vcell_compatible: false
-  vcell_errors: " Encountered ! - at line 76, column 21 "
+  vcell_errors: "Encountered ! - at line 76, column 21"
   simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
-  molclustpy_compatible: false 
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "published-models/tutorials/toy1.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["tutorials"]
   featured: false
   difficulty: "advanced"
- 

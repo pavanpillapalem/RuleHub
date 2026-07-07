@@ -5,11 +5,14 @@ description: "Polymerization model"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["published", "tutorials", "nfsim", "polymer", "a", "b", "c", "simulate_nf"]
 
 date:
   last_tested: 2026-06-30
+
+category: "tutorial"
 
 biol_categories: ["tutorial"]
 
@@ -18,18 +21,18 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: false  #true in original metadata.yaml, but when ran in bionetgen shows this error: WARNING: Species with more than 20 molecules will be labeled with the Quasi method.readNFspecies::Reading from file polymer.species
+  bng2_compatible: false
   vcell_compatible: true
   vcell_errors:
   simulation_methods: ["ode", "ssa","nf"]
-  nfsim_compatible: true         
-  molclustpy_compatible: false  #cannot access local variable 'stdout_str' where it is not associated with a value
+  nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: false
-  default_sim_command: "nf" 
+  default_sim_command: "nf"
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "published-models/tutorials/polymer.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["tutorials"]
   featured: false
   difficulty: "advanced"
- 

@@ -5,11 +5,14 @@ description: "Model: nfsim_hybrid_particle_field.bngl"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["nfsim", "hybrid", "particle", "field"]
 
 date:
   last_tested: 2026-07-02
+
+category: "other"
 
 biol_categories: ["other"]
 
@@ -18,17 +21,17 @@ comp_categories: ["nfsim"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true #WARNING: Species with more than 20 molecules will be labeled with the Quasi method
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "ComponentStateDefinition 0 doesn't exist!"  
+  vcell_errors: "ComponentStateDefinition 0 doesn't exist!"
   simulation_methods: ["ode", "ssa", "nf"]
-  nfsim_compatible: true  #false in original metadata.yaml but runs with bng2 and bngp
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "nf" 
+  default_sim_command: "nf"
   uses_energy: false
   uses_functions: false
   uses_totalrate: false
@@ -44,11 +47,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/nfsim_hybrid_particle_field.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
-

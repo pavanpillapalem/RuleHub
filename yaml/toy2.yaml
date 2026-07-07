@@ -5,11 +5,14 @@ description: "Enzymatic reaction toy"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["published", "tutorials", "toy2", "l", "r", "a", "k"]
 
 date:
   last_tested: 2026-06-30
+
+category: "tutorial"
 
 biol_categories: ["tutorial"]
 
@@ -18,19 +21,19 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: false 
+  bng2_compatible: false
   bngp_compatible: true
   vcell_compatible: false
   vcell_errors: "Encountered kmL at line 65"
   simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false  #       
-  molclustpy_compatible: false 
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
 features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -44,10 +47,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "published-models/tutorials/toy2.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["tutorials"]
   featured: false
   difficulty: "advanced"
- 
