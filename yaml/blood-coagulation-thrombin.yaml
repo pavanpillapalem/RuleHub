@@ -5,11 +5,14 @@ description: "Blood coagulation: Thrombin burst and feedback propagation."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["blood", "coagulation", "thrombin", "signaling"]
 
 date:
   last_tested: 2026-06-26
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -20,16 +23,16 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: true
   vcell_compatible: true
-  vcell_errors: " Encountered TotalRate "
+  vcell_errors: "Encountered TotalRate"
   simulation_methods: ["ode", "ssa", "nf"]
-  nfsim_compatible: true         
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: true
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/blood-coagulation-thrombin.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["immunology", "test-models"]
   featured: false
   difficulty: "advanced"
- 

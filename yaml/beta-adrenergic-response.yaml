@@ -5,11 +5,14 @@ description: "Beta-adrenergic signaling: GPCR pathway and desensitization."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["beta", "adrenergic", "response", "epi", "betar", "gs", "ac", "arr", "camp"]
 
 date:
   last_tested: 2026-06-29
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -23,13 +26,13 @@ compatibility:
   vcell_errors:
   simulation_methods: [ "ode", "ssa", "nf", "vcell" ]
   nfsim_compatible: true
-  molclustpy_compatible: false    # IndexError: list index out of range
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/beta-adrenergic-response.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["neuroscience","test-models"]
   featured: false
   difficulty: "advanced"
- 

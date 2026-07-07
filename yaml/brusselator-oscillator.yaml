@@ -5,11 +5,14 @@ description: "The Brusselator: Auto-catalytic chemical oscillator."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["brusselator", "oscillator", "a", "b", "x", "y"]
 
 date:
   last_tested: 2026-06-29
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -20,16 +23,16 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: true
   vcell_compatible: true
-  vcell_errors: 
+  vcell_errors:
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true    #after continue=>1 is removed  
-  molclustpy_compatible: false   #list index out of range
+  nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/brusselator-oscillator.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["physics", "test-models"]
   featured: false
   difficulty: "advanced"
- 

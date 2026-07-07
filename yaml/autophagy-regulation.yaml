@@ -5,11 +5,14 @@ description: "Autophagy regulation: mTOR and AMPK competition on the ULK1 switch
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["autophagy", "regulation", "mtor", "ampk", "ulk1", "lc3", "p62"]
 
 date:
   last_tested: 2026-06-30
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -22,14 +25,14 @@ compatibility:
   vcell_compatible: false
   vcell_errors: "Encountered } at line 38"
   simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
-  molclustpy_compatible: false #IndexError: list index out of range
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +46,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/autophagy-regulation.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["tutorials"]
   featured: false
   difficulty: "advanced"
- 
