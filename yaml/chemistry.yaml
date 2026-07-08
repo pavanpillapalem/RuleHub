@@ -8,6 +8,8 @@ contributors:
 
 tags: ["published", "tutorials", "chemistry", "a", "b", "c", "d", "e"]
 
+category: "signaling"
+
 date:
   last_tested: 2026-06-30
 
@@ -19,17 +21,21 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: false
+  bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: " encountered exclude_reactants"
-  simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
+  vcell_errors: "encountered exclude_reactants"
+  simulation_methods: ["ode", "ssa"]
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: false
   molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
