@@ -11,6 +11,8 @@ tags: ["dna", "damage", "repair", "mrn", "atm", "chk2", "repaircomplex"]
 date:
   last_tested: 2026-07-02
 
+category: "signaling"
+
 biol_categories: ["signaling"]
 
 comp_categories: ["other"]
@@ -18,15 +20,18 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
-  vcell_compatible: true #put actions outside of model
+  vcell_compatible: true
   vcell_errors: 
   simulation_methods: ["ode", "ssa","nf"]
-  nfsim_compatible: true  
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
