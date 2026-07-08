@@ -8,6 +8,8 @@ contributors:
 
 tags: ["brusselator", "oscillator", "a", "b", "x", "y"]
 
+category: "signaling"
+
 date:
   last_tested: 2026-06-29
 
@@ -20,16 +22,19 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: true
   vcell_compatible: true
-  vcell_errors: 
+  vcell_errors: "NFSIM: compatible after continue=>1 is removed   MCP:  list index out of range"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true    #after continue=>1 is removed  
-  molclustpy_compatible: false   #list index out of range
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: true
+  nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
