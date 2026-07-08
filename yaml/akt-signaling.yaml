@@ -11,6 +11,8 @@ tags: ["akt", "signaling", "growthfactor", "rtk", "pi3k", "mtorc2", "mtorc1", "s
 date:
   last_tested: 2026-06-29
 
+category: "signaling"
+
 biol_categories: ["other"]
 
 comp_categories: ["other"]
@@ -21,13 +23,16 @@ compatibility:
   bng2_compatible: true
   vcell_compatible: true
   vcell_errors: 
-  simulation_methods: ["ode", "ssa", "nf", "molclustpy", "vcell" ]
+  simulation_methods: ["ode", "ssa", "nf"]
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
   nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
   uses_functions: false
   uses_totalrate: false
@@ -49,4 +54,4 @@ playground:
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
+  
