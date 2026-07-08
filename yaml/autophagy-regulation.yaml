@@ -10,9 +10,9 @@ tags: ["autophagy", "regulation", "mtor", "ampk", "ulk1", "lc3", "p62"]
 
 date:
   last_tested: 2026-06-30
-
+  
+category: "signaling"
 biol_categories: ["signaling"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -20,16 +20,19 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: false
   vcell_compatible: false
-  vcell_errors: "Encountered } at line 38"
-  simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
-  molclustpy_compatible: false #IndexError: list index out of range
+  vcell_errors: "Encountered } at line 38, MCP: list index of of range"
+  simulation_methods: ["ode", "ssa"]
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
