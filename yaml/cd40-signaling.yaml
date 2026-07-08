@@ -11,6 +11,8 @@ tags: ["cd40", "signaling", "cd40l", "traf", "ikk", "nik", "nfkb", "relb"]
 date:
   last_tested: 2026-07-01
 
+category: "signaling"
+
 biol_categories: ["signaling"]
 
 comp_categories: ["other"]
@@ -18,19 +20,22 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered TotalRate at line 71 "
+  vcell_errors: "Encountered TotalRate at line 71   NFSIM: false in original metadata.yaml, but runs with nf on bng2"
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: true
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true #false in original metadata.yaml, but runs with nf on bng2       
-  molclustpy_compatible: true #Put action block after end model
+  nfsim_compatible: true
+  molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: true
   uses_moveconnected: false
   uses_trash_molecules: false
