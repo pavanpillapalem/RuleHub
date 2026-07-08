@@ -7,6 +7,7 @@ contributors:
   - name: "Nabil Mardhy"
 
 tags: ["e2f", "rb", "cell", "cycle", "switch", "mitogen", "cycd", "cyce", "p27"]
+
 date:
   last_tested: 2026-07-02
 
@@ -17,15 +18,18 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
-  vcell_compatible: false 
-  vcell_errors: "Encountered -> at line 73"
+  vcell_compatible: false
+  vcell_errors: "Encountered -> at line 73   NFSIM: NFsim does not support continue option. at line 101   MCP: IndexError: list index out of range"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: false # "NFsim does not support 'continue' option. at line 101"
-  molclustpy_compatible: false #IndexError: list index out of range
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: true
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
