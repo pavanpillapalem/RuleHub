@@ -20,17 +20,17 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: true
-  bngp_compatible: true 
+  bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered 0 at line 53"
+  vcell_errors: "Encountered 0 at line 53 MCP: IndexError: list index out of range"
   simulation_methods: ["ode", "ssa","nf"]
-  molclustpy_compatible: false #IndexError: list index out of range
   uses_energy: false
   uses_functions: true
   uses_compartments: false
   nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_totalrate: false
