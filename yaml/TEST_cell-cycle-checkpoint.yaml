@@ -4,7 +4,7 @@ description: "Cell cycle checkpoint: Mitotic entry switch (CDK1)."
 
 contributors:
   - name: "Achyudhan"
-  - name: "Nabil Mardhy"
+  - name: "Nabil Mardhy" 
 
 tags: ["cell", "cycle", "checkpoint", "cyclin", "cdk", "cdc25", "wee1", "apc", "p21"]
 
