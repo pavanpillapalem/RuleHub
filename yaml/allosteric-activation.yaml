@@ -5,11 +5,14 @@ description: "Binding constants"
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["allosteric", "activation", "enzyme", "substrate", "activator", "product"]
 
 date:
   last_tested: 2026-06-26
+
+category: "signaling"
 
 biol_categories: ["signaling"]
 
@@ -20,16 +23,19 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: true
   vcell_compatible: true
-  vcell_errors: 
-  simulation_methods: [ "ode", "ssa", "nf", "vcell" ]
-  nfsim_compatible: true
-  molclustpy_compatible: false    # cannot access local variable 'stdout_str' where it is not associated with a value
-
-Features:
-  uses_generate_network: true
-  default_sim_command: "ode" 
+  vcell_errors: "cannot access local variable 'stdout_str' where it is not associated with a value"
+  simulation_methods: ["ode", "ssa", "nf"]
+  uses_compartments: false
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
+  nfsim_compatible: true
+  molclustpy_compatible: false
+
+features:
+  uses_generate_network: true
+  default_sim_command: "ode"
+  uses_energy: false
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -43,10 +49,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/allosteric-activation.bngl"
- 
+
 playground:
   visible: false
   gallery_categories: ["test-models"]
   featured: false
   difficulty: "advanced"
- 
