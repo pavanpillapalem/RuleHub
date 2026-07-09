@@ -8,6 +8,8 @@ contributors:
 
 tags: ["dna", "methylation", "dynamics", "cpg", "dnmt1", "tet", "v_maint", "v_erase"]
 
+category: "signaling"
+
 date:
   last_tested: 2026-07-02
 
@@ -18,17 +20,20 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: Encountered "}" at line 29 
+  vcell_errors: "Encountered } at line 29  NFSIM: false in original metadata.yaml but runs with bng2"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true  #false in original metadata.yaml but runs with bng2
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
   uses_functions: false
   uses_totalrate: false
