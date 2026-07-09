@@ -12,9 +12,7 @@ date:
   last_tested: 2026-07-02
 
 category: "signaling"
-
 biol_categories: ["signaling"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -23,7 +21,7 @@ compatibility:
   bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: true
-  vcell_errors: 
+  vcell_errors: "put actions outside of model"
   simulation_methods: ["ode", "ssa","nf"]
   uses_compartments: false
   uses_energy: false
