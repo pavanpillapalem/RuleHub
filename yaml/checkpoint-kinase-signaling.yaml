@@ -11,6 +11,8 @@ tags: ["checkpoint", "kinase", "signaling", "dna", "atm", "atr", "chk1", "chk2",
 date:
   last_tested: 2026-07-01
 
+category: "signaling"
+
 biol_categories: ["signaling"]
 
 comp_categories: ["other"]
@@ -18,19 +20,22 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
-  vcell_compatible: true #import works but simulation fails: RuntimeException-Application 'NFSim app' has no generated Math
-  vcell_errors: 
+  vcell_compatible: true
+  vcell_errors: "import works but simulation fails: RuntimeException-Application NFSim app has no generated Math      NFSIM: false in original metadata.yaml, but runs with nf on bng2"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: true # false in original metadata.yaml, but runs with nf on bng2   
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: true
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
