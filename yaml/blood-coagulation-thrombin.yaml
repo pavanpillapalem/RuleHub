@@ -13,9 +13,7 @@ date:
   last_tested: 2026-06-26
 
 category: "signaling"
-
 biol_categories: ["signaling"]
-
 comp_categories: ["tutorial"]
 
 compatibility:
@@ -30,6 +28,7 @@ compatibility:
   uses_functions: false
   nfsim_compatible: true
   molclustpy_compatible: true
+  comments: "errors for molclustpy data processing"
 
 features:
   uses_generate_network: true
