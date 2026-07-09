@@ -12,9 +12,7 @@ date:
   last_tested: 2026-07-01
 
 category: "signaling"
-
 biol_categories: ["signaling"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -23,13 +21,14 @@ compatibility:
   bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered 0 at line 85    NFSIM: false in original metadata.yaml, but runs with nf on bng2  WARNING: Species with more than 20 molecules will be labeled with the Quasi method.     MCP:IndexError: list index out of range" 
+  vcell_errors: "Encountered 0 at line 85" 
   simulation_methods: ["ode", "ssa"]
   uses_compartments: false
   uses_energy: false
   uses_functions: true
   nfsim_compatible: true
   molclustpy_compatible: false
+  comments: "nfsim_compatibility is changes, runs with nf on bng2 with warning Species with more than 20 molecules will be labeled with the Quasi method. Does not run on bngp. MCP list index out of range"
 
 features:
   uses_generate_network: true
