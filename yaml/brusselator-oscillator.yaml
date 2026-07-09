@@ -8,13 +8,11 @@ contributors:
 
 tags: ["brusselator", "oscillator", "a", "b", "x", "y"]
 
-category: "signaling"
-
 date:
   last_tested: 2026-06-29
 
+category: "signaling"
 biol_categories: ["signaling"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -22,13 +20,14 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: true
   vcell_compatible: true
-  vcell_errors: "NFSIM: compatible after continue=>1 is removed   MCP:  list index out of range"
+  vcell_errors: 
   simulation_methods: ["ode", "ssa"]
   uses_compartments: false
   uses_energy: false
   uses_functions: true
   nfsim_compatible: true
   molclustpy_compatible: false
+  comments: "nfsim is compatible after continue=>1 is removed  MCP list index out of range"
 
 features:
   uses_generate_network: true
