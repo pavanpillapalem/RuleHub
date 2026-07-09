@@ -12,9 +12,7 @@ date:
   last_tested: 2026-07-01
 
 category: "signaling"
-
 biol_categories: ["signaling"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -30,6 +28,7 @@ compatibility:
   simulation_methods: ["ode", "ssa"]
   nfsim_compatible: true
   molclustpy_compatible: true
+  comments: "changed nfsim_compatible to true, runs in BNG2 but not in bngp"
 
 features:
   uses_generate_network: true
