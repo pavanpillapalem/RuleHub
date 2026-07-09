@@ -22,8 +22,8 @@ compatibility:
   bnglviz_compatible: true
   bng2_compatible: false
   bngp_compatible: true
-  vcell_compatible: false
-  vcell_errors: "Encountered kmL at line 65"
+  vcell_compatible: true
+  vcell_errors: 
   simulation_methods: ["ode", "ssa"]
   uses_energy: false
   uses_functions: false
