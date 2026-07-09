@@ -5,11 +5,14 @@ description: "Cell cycle checkpoint: Mitotic entry switch (CDK1)."
 contributors:
   - name: "Achyudhan"
   - name: "Nabil Mardhy"
+  - name: "Pavan Kumar Pillapalem"
 
 tags: ["cell", "cycle", "checkpoint", "cyclin", "cdk", "cdc25", "wee1", "apc", "p21"]
 
 date:
   last_tested: 2026-07-01
+
+category: "cell cycle"
 
 biol_categories: ["cell cycle"]
 
@@ -18,19 +21,22 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true 
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered ! at line 77"
+  vcell_errors: "Encountered ! at line 77. MCP: UnboundLocalError: cannot access local variable 'stdout_str' where it is not associated with a value"
   simulation_methods: ["ode", "ssa"]
-  nfsim_compatible: false  #....
-  molclustpy_compatible: false #UnboundLocalError: cannot access local variable 'stdout_str' where it is not associated with a value
-
-Features:
-  uses_generate_network: true
-  default_sim_command: "ode" 
+  uses_compartments: false
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
+  nfsim_compatible: false
+  molclustpy_compatible: false
+
+features:
+  uses_generate_network: true
+  default_sim_command: "ode"
+  uses_energy: false
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false
@@ -44,10 +50,9 @@ source:
   original_format: "bngl"
   original_repository: "bionetgen-web-simulator"
   source_path: "example-models/cell-cycle-checkpoint.bngl"
- 
+
 playground:
   visible: false
-  gallery_categories: ["cell-cycle","test-models"]
+  gallery_categories: ["cell-cycle", "test-models"]
   featured: false
   difficulty: "advanced"
- 
