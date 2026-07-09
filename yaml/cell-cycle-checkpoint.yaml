@@ -13,9 +13,7 @@ date:
   last_tested: 2026-07-01
 
 category: "cell cycle"
-
 biol_categories: ["cell cycle"]
-
 comp_categories: ["other"]
 
 compatibility:
@@ -24,13 +22,14 @@ compatibility:
   bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "Encountered ! at line 77. MCP: UnboundLocalError: cannot access local variable 'stdout_str' where it is not associated with a value"
+  vcell_errors: "Encountered ! at line 77"
   simulation_methods: ["ode", "ssa"]
   uses_compartments: false
   uses_energy: false
   uses_functions: true
   nfsim_compatible: false
   molclustpy_compatible: false
+  comments: "bng - I can only handle a site that has 0 or 1 bonds"
 
 features:
   uses_generate_network: true
