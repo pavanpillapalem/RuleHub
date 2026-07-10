@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 0 600 480" width="100%" height="100%">
+    <style>
+        .line { stroke: black; stroke-width: 12; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .dashed { stroke: black; stroke-width: 12; fill: none; stroke-dasharray: 15 20; stroke-linecap: butt; }
+        .box { stroke: black; stroke-width: 12; }
+        .text { fill: black; font-family: monospace, sans-serif; font-weight: 900; font-size: 72px; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+
+    <line x1="130" y1="100" x2="200" y2="100" class="line" stroke-linecap="butt"/>
+    <line x1="600" y1="100" x2="670" y2="100" class="line" stroke-linecap="butt"/>
+
+    <line x1="200" y1="100" x2="600" y2="100" class="dashed" />
+
+    <path d="M 200 100
+             Q 250 100, 250 150
+             L 250 340
+             Q 250 380, 290 380
+             L 510 380
+             Q 550 380, 550 340
+             L 550 150
+             Q 550 100, 600 100" class="line" />
+
+    <path d="M 250 200
+             L 250 200
+             Q 250 240, 290 240
+             L 510 240
+             Q 550 240, 550 200
+             L 550 200" class="line" />
+
+    <line x1="130" y1="50" x2="130" y2="150" stroke="black" stroke-width="16" stroke-linecap="square"/>
+
+    <line x1="670" y1="50" x2="670" y2="150" stroke="black" stroke-width="16" stroke-linecap="square"/>
+
+    <rect x="300" y="45" width="200" height="110" rx="55" fill="#B3D5E6" class="box" />
+    <text x="400" y="105" class="text">R</text>
+
+    <rect x="325" y="185" width="150" height="110" fill="#EAE087" class="box" />
+    <text x="400" y="245" class="text">R</text>
+
+    <rect x="325" y="325" width="150" height="110" fill="#EAE087" class="box" />
+    <text x="400" y="385" class="text">R</text>
+</svg>

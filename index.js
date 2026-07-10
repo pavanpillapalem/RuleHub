@@ -30,17 +30,15 @@ const DEFAULT_VISIBLE_COLUMNS = [
   "source.origin",
   "name",
   "description",
-  "bnglviz",
-  "rules_railroad",
-  "bngplayground"
+  "tools"
 ];
 
 const FEATURE_FILTER_COLUMNS = new Set([
   "compatibility.nfsim_compatible",
   "compatibility.bng2_compatible",
-  "Features.uses_compartments",
-  "Features.uses_energy",
-  "Features.uses_functions"
+  "features.uses_compartments",
+  "features.uses_energy",
+  "features.uses_functions"
 ]);
 
 const COMMENTED_OUT_COLUMN_CHECKBOXES = new Set([
@@ -80,12 +78,18 @@ const HIDDEN_COLUMN_CHECKBOXES = new Set([
 
 const NON_SORTABLE_COLUMNS = new Set([
   "bngl_code",
-  "bnglviz",
-  "rules_railroad",
-  "bngplayground",
+  "tools",
   "github",
   "github_link",
   "raw"
+]);
+
+const FUTURE_COLUMNS = new Set([
+  "citation.year",
+  "citation.pmid",
+  "citation.doi",
+  "biol_categories",
+  "comp_categories"
 ]);
 
 const COLUMN_LABELS = {
@@ -93,9 +97,12 @@ const COLUMN_LABELS = {
   "name": "Name",
   "description": "Description",
   "bngl_code": "BNGL code",
-  "bnglviz": "bnglViz",
-  "rules_railroad": "RulesRailRoad",
-  "bngplayground": "bngPlayground",
+  "tools": "Tools",
+  "citation.year": "Year",
+  "citation.pmid": "PubMed ID",
+  "citation.doi": "DOI",
+  "biol_categories": "Biological Categories",
+  "comp_categories": "Other Categories",
   "github": "GitHub",
   "github_link": "GitHub",
   "compatibility.simulation_methods": "simulation methods"
@@ -324,9 +331,7 @@ console.log(flat["source.origin"]);
         yaml_github: yamlGitHubUrl,
         raw: rawUrl,
         bngl_item: null,
-        bnglviz: null,
-        rules_railroad: null,
-        bngplayground: null,
+        tools: null,
         ...flat
       }];
     }
@@ -344,9 +349,7 @@ console.log(flat["source.origin"]);
       yaml_github: yamlGitHubUrl,
       raw: rawUrl,
       bngl_item: item,
-      bnglviz: item,
-      rules_railroad: item,
-      bngplayground: item,
+      tools: item,
       ...flat
     }));
   } catch (error) {
@@ -425,9 +428,10 @@ async function loadAllMetadata() {
     "source.origin",
     "name",
     "description",
-    "bnglviz",
-    "rules_railroad",
-    "bngplayground",
+    "tools",
+    "citation.year",
+    "citation.pmid",
+    "citation.doi",
     "github_link",
     "github",
     "bngl_item",
@@ -441,14 +445,13 @@ async function loadAllMetadata() {
     "id",
     "authors",
     "contributors",
-    "citation.doi",
-    "citation.pmid",
     "citation.reference",
     "date.created",
     "date.modified",
-    "date.published",
     "tags",
     "category",
+    "biol_categories",
+    "comp_categories",
     "compatibility.min_bng_version",
     "compatibility.simulation_methods",
     "source.source_path",
@@ -464,10 +467,9 @@ async function loadAllMetadata() {
     ...preferred.filter(column =>
       (
         allColumnNames.has(column) ||
+        FUTURE_COLUMNS.has(column) ||
         column === "source.origin" ||
-        column === "bnglviz" ||
-        column === "rules_railroad" ||
-        column === "bngplayground" ||
+        column === "tools" ||
         column === "github_link"
       ) &&
       !HIDDEN_COLUMN_CHECKBOXES.has(column)
@@ -517,10 +519,12 @@ function renderColumnCheckboxes() {
   });
 }
 
-function renderSingleViewLink(item, urlKey) {
+function renderSingleViewLink(item, urlKey, iconSrc, altText) {
   if (!item || !item[urlKey]) return "";
 
-  return `<a href="${escapeHtml(item[urlKey])}" target="_blank" rel="noopener" title="${escapeHtml(item.label)}">view</a>`;
+  return `<a href="${escapeHtml(item[urlKey])}" target="_blank" rel="noopener" title="${escapeHtml(item.label)}">
+            <img src="${iconSrc}" alt="${altText}" width="44" height="44" style="vertical-align: middle;">
+          </a>`;
 }
 
 function renderCell(column, value, row) {
@@ -548,14 +552,14 @@ if (column === "description") {
 
   if (row.raw) {
     const energyIcon = isTruthyYamlValue(
-      row["Features.uses_energy"] ??
+      row["features.uses_energy"] ??
       row["compatibility.uses_energy"]
     )
       ? ` <img src="icons/einstein-equation.svg" width="28" alt="Energy">`
       : "";
 
     const functionIcon = isTruthyYamlValue(
-      row["Features.uses_functions"] ??
+      row["features.uses_functions"] ??
       row["compatibility.uses_functions"]
     )
       ? ` <img src="icons/functions.svg" width="28" alt="Functions">`
@@ -567,16 +571,16 @@ if (column === "description") {
   return escapeHtml(value);
 }
 
-  if (column === "bnglviz") {
-    return renderSingleViewLink(value, "bnglVizUrl");
-  }
+if (column === "tools") {
+    if (!value) return "";
 
-  if (column === "rules_railroad") {
-    return renderSingleViewLink(value, "rulesRailRoadUrl");
-  }
+    let iconsHtml = "";
+    iconsHtml += renderSingleViewLink(value, "bnglVizUrl", "icons/bngl.svg", "bnglViz");
+    iconsHtml += renderSingleViewLink(value, "rulesRailRoadUrl", "icons/rulesrailroads.svg", "RulesRailRoad");
+    iconsHtml += renderSingleViewLink(value, "bngPlaygroundUrl", "icons/BNGPlayground.svg", "bngPlayground");
+    // iconsHtml += renderSingleViewLink(value, "molClustPyUrl", "icons/molclustpy.svg", "MolClustPy");
 
-  if (column === "bngplayground") {
-    return renderSingleViewLink(value, "bngPlaygroundUrl");
+    return `<div style="display: flex; gap: 14px; align-items: center;">${iconsHtml}</div>`;
   }
 
   if (column === "name") {
@@ -607,6 +611,14 @@ if (column === "description") {
   }
 
   return escapeHtml(value);
+
+  if (column === "biol_categories") {
+    return escapeHtml(row.category ?? "");
+}
+
+if (column === "comp_categories") {
+    return escapeHtml(row.category ?? "");
+}
 }
 
 function searchableText(value) {
@@ -635,11 +647,11 @@ function getFeatureFilterCandidates(column) {
   const candidates = [column];
 
   if (column.startsWith("compatibility.")) {
-    candidates.push(column.replace("compatibility.", "Features."));
+    candidates.push(column.replace("compatibility.", "features."));
   }
 
-  if (column.startsWith("Features.")) {
-    candidates.push(column.replace("Features.", "compatibility."));
+  if (column.startsWith("features.")) {
+    candidates.push(column.replace("features.", "compatibility."));
   }
 
   return candidates;
@@ -655,6 +667,23 @@ function rowMatchesFeatureFilters(row) {
 
     return value != null && isTruthyYamlValue(value);
   });
+}
+
+function getSelectedSimulationFilters() {
+  return [...document.querySelectorAll(".simulation-checkbox:checked")]
+    .map(input => input.value.toLowerCase());
+}
+
+function rowMatchesSimulationFilters(row) {
+  const selected = getSelectedSimulationFilters();
+
+  if (selected.length === 0) return true;
+
+  const methods = String(
+    row["compatibility.simulation_methods"] ?? ""
+  ).toLowerCase();
+
+  return selected.every(method => methods.includes(method));
 }
 
 function valueForSort(row, column) {
@@ -680,7 +709,8 @@ function getFilteredSortedRows() {
     .filter(row => rowMatchesSearch(row, query))
     .filter(row => rowMatchesDifficulty(row))
     .filter(row => rowMatchesType(row))
-    .filter(row => rowMatchesFeatureFilters(row));
+    .filter(row => rowMatchesFeatureFilters(row))
+    .filter(row => rowMatchesSimulationFilters(row));
 
   if (sortState.column && !NON_SORTABLE_COLUMNS.has(sortState.column)) {
     const column = sortState.column;
@@ -909,20 +939,17 @@ function csvValueForColumn(row, column) {
     return row.github || "";
   }
 
-  if (column === "bnglviz" && row[column]) {
-    return row[column].bnglVizUrl || "";
+  if (column === "tools" && row[column]) {
+      const item = row[column];
+      const links = [];
+      if (item.bnglVizUrl) links.push(item.bnglVizUrl);
+      if (item.rulesRailRoadUrl) links.push(item.rulesRailRoadUrl);
+      if (item.bngPlaygroundUrl) links.push(item.bngPlaygroundUrl);
+     // if (item.molClustPyUrl) links.push(item.molClustPyUrl);
+    return links.join("; ");
   }
-
-  if (column === "rules_railroad" && row[column]) {
-    return row[column].rulesRailRoadUrl || "";
+    return row[column] ?? "";
   }
-
-  if (column === "bngplayground" && row[column]) {
-    return row[column].bngPlaygroundUrl || "";
-  }
-
-  return row[column] ?? "";
-}
 
 function downloadCsv() {
   const activeColumns = columns.filter(column => visibleColumns.has(column));
@@ -976,6 +1003,13 @@ function attachEventListeners() {
   document.getElementById("reload").addEventListener("click", loadAllMetadata);
 
   document.getElementById("downloadCsv").addEventListener("click", downloadCsv);
+
+  document.querySelectorAll(".simulation-checkbox").forEach(input => {
+  input.addEventListener("change", () => {
+    currentPage = 1;
+    renderTable();
+    });
+  });
 
   document.getElementById("showDefault").addEventListener("click", () => {
     visibleColumns = new Set(DEFAULT_VISIBLE_COLUMNS.filter(column => columns.includes(column)));
