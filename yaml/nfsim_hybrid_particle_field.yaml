@@ -11,6 +11,8 @@ tags: ["nfsim", "hybrid", "particle", "field"]
 date:
   last_tested: 2026-07-02
 
+category: "signaling"
+
 biol_categories: ["other"]
 
 comp_categories: ["nfsim"]
@@ -18,15 +20,18 @@ comp_categories: ["nfsim"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true #WARNING: Species with more than 20 molecules will be labeled with the Quasi method
+  bng2_compatible: true
   bngp_compatible: true
   vcell_compatible: false
-  vcell_errors: "ComponentStateDefinition 0 doesn't exist!"  
+  vcell_errors: "ComponentStateDefinition 0 doesn't exist!     BNG2: WARNING: Species with more than 20 molecules will be labeled with the Quasi method     NFSIM: false in original metadata.yaml but runs with bng2 and bngp"
   simulation_methods: ["ode", "ssa", "nf"]
-  nfsim_compatible: true  #false in original metadata.yaml but runs with bng2 and bngp
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: true
   molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "nf" 
   uses_energy: false

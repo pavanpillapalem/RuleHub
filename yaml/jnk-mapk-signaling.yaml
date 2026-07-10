@@ -7,6 +7,7 @@ contributors:
   - name: "Nabil Mardhy"
 
 tags: ["jnk", "mapk", "signaling", "mkk7", "jip1", "v_dephos"]
+
 date:
   last_tested: 2026-07-07
 
@@ -20,17 +21,17 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: true
-  bngp_compatible: true 
-  vcell_compatible: true #It cannot run the simulation there is an error message.
-  vcell_errors: "RuntimeException-Application 'NFSim app' has no generated Math, Failed to generate new Math: not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))' MappingException-not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))'"
+  bngp_compatible: true
+  vcell_compatible: true
+  vcell_errors: "VCELL: RuntimeException-Application 'NFSim app' has no generated Math, Failed to generate new Math: not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))' MappingException-not mass action: flattened Kf for reactionRule(r5) is not numeric, exp = '(3.0 * Total_pJNK / (250.0 + Total_pJNK))'"
   simulation_methods: ["ode", "ssa"]
-  molclustpy_compatible: false #cannot access local variable 'stdout_str' where it is not associated with a value
   uses_energy: false
   uses_functions: true
   uses_compartments: false
-  nfsim_compatible: true #false in orignal metadata.yaml file, but runs with bng2
+  nfsim_compatible: true
+  molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_totalrate: false

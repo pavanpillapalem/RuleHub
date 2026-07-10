@@ -11,6 +11,8 @@ tags: ["published", "tutorials", "toy2", "l", "r", "a", "k"]
 date:
   last_tested: 2026-06-30
 
+category: "signaling"
+
 biol_categories: ["tutorial"]
 
 comp_categories: ["other"]
@@ -18,19 +20,22 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: false 
+  bng2_compatible: false
   bngp_compatible: true
-  vcell_compatible: false
-  vcell_errors: "Encountered kmL at line 65"
-  simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false  #       
-  molclustpy_compatible: false 
+  vcell_compatible: true
+  vcell_errors: 
+  simulation_methods: ["ode", "ssa"]
+  uses_energy: false
+  uses_functions: false
+  uses_compartments: false
+  molclustpy_compatible: false
+  nfsim_compatible: false
 
 features:
   uses_generate_network: true
-  default_sim_command: "ode" 
+  default_sim_command: "ode"
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false

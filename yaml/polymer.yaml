@@ -11,25 +11,27 @@ tags: ["published", "tutorials", "nfsim", "polymer", "a", "b", "c", "simulate_nf
 date:
   last_tested: 2026-06-30
 
+category: "signaling"
 biol_categories: ["tutorial"]
-
 comp_categories: ["other"]
 
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: false  #true in original metadata.yaml, but when ran in bionetgen shows this error: WARNING: Species with more than 20 molecules will be labeled with the Quasi method.readNFspecies::Reading from file polymer.species
-  vcell_compatible: true
-  vcell_errors:
+  bng2_compatible: false
+  vcell_errors: "MCP error: cannot access local variable 'stdout_str' where it is not associated with a value.   BNG2: true in original metadata.yaml, but when ran in bionetgen shows this error: WARNING: Species with more than 20 molecules will be labeled with the Quasi method.readNFspecies::Reading from file polymer.species
   simulation_methods: ["ode", "ssa","nf"]
-  nfsim_compatible: true         
-  molclustpy_compatible: false  #cannot access local variable 'stdout_str' where it is not associated with a value
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: true
+  nfsim_compatible: true
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: false
   default_sim_command: "nf" 
   uses_energy: false
-  uses_functions: true 
+  uses_functions: true
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false

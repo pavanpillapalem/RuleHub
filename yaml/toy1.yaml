@@ -11,6 +11,8 @@ tags: ["published", "tutorials", "toy1", "l", "r", "a", "generate_network", "wri
 date:
   last_tested: 2026-06-30
 
+category: "signaling"
+
 biol_categories: ["tutorial"]
 
 comp_categories: ["other"]
@@ -18,18 +20,21 @@ comp_categories: ["other"]
 compatibility:
   rr_compatible: true
   bnglviz_compatible: true
-  bng2_compatible: true #False in original metadata.yaml, have to change "molecules" to "molecule types" in toy1.bngl to make it compatible with bng2
+  bng2_compatible: true
   vcell_compatible: false
-  vcell_errors: " Encountered ! - at line 76, column 21 "
-  simulation_methods: ["ode", "ssa",]
-  nfsim_compatible: false         
-  molclustpy_compatible: false 
+  vcell_errors: " Encountered ! - at line 76, column 21, BGN2: False in original metadata.yaml, have to change "molecules" to "molecule types" in toy1.bngl to make it compatible with bng2 "
+  simulation_methods: ["ode", "ssa"]
+  uses_compartments: false
+  uses_energy: false
+  uses_functions: false
+  nfsim_compatible: false
+  molclustpy_compatible: false
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_energy: false
-  uses_functions: false 
+  uses_functions: false
   uses_totalrate: false
   uses_moveconnected: false
   uses_trash_molecules: false

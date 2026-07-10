@@ -7,6 +7,7 @@ contributors:
   - name: "Nabil Mardhy"
 
 tags: ["ire1a", "xbp1", "er", "stress", "ire1", "bip", "unfolded", "ridd_target"]
+
 date:
   last_tested: 2026-07-07
 
@@ -20,17 +21,17 @@ compatibility:
   rr_compatible: true
   bnglviz_compatible: true
   bng2_compatible: true
-  bngp_compatible: true 
+  bngp_compatible: true
   vcell_compatible: false
   vcell_errors: "Encountered -> at line 69"
   simulation_methods: ["ode", "ssa"]
-  molclustpy_compatible: true
   uses_energy: false
   uses_functions: true
   uses_compartments: false
-  nfsim_compatible: true 
+  nfsim_compatible: true
+  molclustpy_compatible: true
 
-Features:
+features:
   uses_generate_network: true
   default_sim_command: "ode" 
   uses_totalrate: false
